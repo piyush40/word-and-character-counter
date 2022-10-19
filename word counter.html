@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        h1{
+            text-align: center;
+            background-color: aqua;
+            color:white;
+            padding: 10px;
+            margin: 0px;
+        }
+        body{
+            padding: 50px 100px;
+
+        }
+        #textbox{
+            width:98.9%;
+            border-color: aqua;
+            
+        }
+        p{
+            text-align: center;
+            background-color: aqua;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            margin:0px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <h1>Word and character Counter</h1>
+    <textarea id="textbox" cols="30" rows="10"></textarea>
+    <p>
+        <Span id="word">0</Span> words and 
+        <Span id="char">0</Span> character
+    </p>
+   
+    <script>
+        let textbox = document.getElementById("textbox");
+        textbox.addEventListener('input', function(){
+            let text = this.value;
+            // to check , our code is correct or not
+            //console.log(text);
+            let char = text.length;
+            document.getElementById("char").innerHTML = char;
+
+            /* here we use trim function because agar ham trim function apply nahi karenge to word counter me compiler space ko bhi word count kar lega;
+            trim function ko char ke bad isliye use karte hai  because  char counting me ham space ko bhi counting karte hai.
+            */
+            text = text.trim();
+            let word= text.split(" ");
+            // here we use splict function because -- we want that where our compiler see the space then break the word and count it.
+            // splict function break the word and store in the array and we can easily fnd the length of the array using array.length.
+            let cleanList = word.filter(function(el){
+                return el != "";
+            });
+            
+            document.getElementById('word').innerHTML = cleanList.length;
+             
+
+             
+        })
+
+    </script>
+</body>
+</html>
